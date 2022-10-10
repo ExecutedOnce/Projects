@@ -1,0 +1,55 @@
+ListOfRPS = ['rock', 'paper', 'scissors']
+PlayerA, PlayerB = 0, 0
+def PlayGaem(PlayerAChoice, PlayerBChoice):
+    if PlayerAChoice == PlayerBChoice:
+        return 'NoWin'
+    if PlayerAChoice == 'rock':
+        if PlayerBChoice == 'scissors':
+            return 'Awin'
+        else:
+            return 'Bwin'
+    if PlayerAChoice == 'paper':
+        if PlayerBChoice == 'rock':
+            return 'Awin'
+        else:
+            return 'Bwin'
+    if PlayerAChoice == 'scissors':
+        if PlayerBChoice == 'Paper':
+            return 'Awin'
+        else:
+            return 'Bwin'
+
+        pass
+def UserInput(x):
+    if x == 'a':
+        return (input("Player one, enter either: 'Rock, Paper, Scissors: ").lower())
+    if x == 'b':
+        return (input("Player two, enter either: 'Rock, Paper, Scissors: ").lower())
+
+    #print(PlayerAChoice, ListOfRPS.index(PlayerAChoice))
+while True:
+    OutcomeA = UserInput('a')
+    if OutcomeA not in ListOfRPS:
+        print('Error, invalid input')
+        OutcomeA = UserInput('a')
+    OutcomeB = UserInput('b')
+    if OutcomeB not in ListOfRPS:
+        print('Error, invalid input')
+        OutcomeB = UserInput('b')
+    Outcome = PlayGaem(OutcomeA, OutcomeB)
+    if Outcome == 'Awin':
+        print('Player A has won the round using {} against player B\'s {}!'.format(OutcomeA.upper(), OutcomeB.upper()))
+        PlayerA += 1
+    if Outcome == 'Bwin':
+        print('Player B has won the round using {} against player A\'s {}!'.format(OutcomeB.upper(), OutcomeA.upper()))
+        PlayerB += 1
+    if Outcome == 'NoWin':
+        print('Players both picked {} and tied.'.format(OutcomeA))
+    if PlayerA == 3:
+        print('PlayerA has won the game!!')
+        PlayerA = 0
+        PlayerB = 0
+    if PlayerB == 3:
+        print('PlayerA has won the game!!')
+        PlayerA = 0
+        PlayerB = 0
